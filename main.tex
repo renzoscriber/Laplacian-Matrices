@@ -1,0 +1,55 @@
+\documentclass[a4paper]{article}
+
+% Start Preamble
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage[english]{babel}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{apacite}
+
+\definecolor{nerfgreen}{cmyk}{0.68,0,0.94,0.11} 
+\definecolor{maroon1}{cmyk}{0,0.8,0.3,0}    
+
+\title{Laplacian Matrices}
+\author{Renzo Shredder}
+\date{September 24 2018}
+% End Preamble
+
+\begin{document}
+\maketitle
+%---------------------
+\section*{\citeA{dcb12}} 
+\subsection*{Model Overview}
+Let $G(\mathcal{V},\mathcal{E},A)$ be an connected graph representing a network of $n$ coupled oscillators. 
+\begin{itemize}
+    \item $\mathcal{V} = \{1,...,n\}$ denotes the set of nodes (i.e., oscillators) in $G$
+    \item $\mathcal{E} \subset \{\mathcal{V} \times \mathcal{V}\}$ denotes the set of edges connecting (i.e., coupling) the nodes 
+    \item Moreover, we can assign each undirected edge, $\{ i, j\} \in \mathcal{E}$, a positive weight $a_{ij}>0$ (non-adjacent nodes are defined by "edges" of weight 0) 
+\end{itemize}
+Assume $\mathcal{V}$ is partitioned as $\mathcal{V} = \mathcal{V}_{1} \cup \mathcal{V}_{2}$ and consider the following ODEs:
+    \begin{equation}
+        M_i \ddot{\theta}_i + D_i \dot{\theta}_i = \omega_i - \sum_{j=1}^{n}{a_{ij} sin(\theta_i - \theta_j)}, \quad i \in \mathcal{V}_1
+    \end{equation}
+    \begin{equation}
+        D_i \dot{\theta}_i = \omega_i - \sum_{j=1}^{n}{a_{ij} sin(\theta_i - \theta_j)}, \quad i \in \mathcal{V}_2
+    \end{equation}
+    \begin{itemize}
+        \item The first group of oscillators ($\mathcal{V}_1$) are subject to Newtonian dynamics where...
+            \begin{itemize}
+                \item $M_{i}$ denotes the inertia coefficient for node $\{i\} \in \mathcal{V}_1$
+                \item $D_{i}$ denotes the viscous damping coefficient for node $\{i\} \in \mathcal{V}_1$
+            \end{itemize}
+        \item The second group of oscillators ($\mathcal{V}_2$) are subject to first-order dynamics where...
+        \begin{itemize}
+            \item $D_{i}$ denotes the time constant associated with node $\{i\} \in \mathcal{V}_2$
+        \end{itemize}
+    \end{itemize}
+%---------------------
+\section*{\citeA{fmw16}}
+%---------------------
+\bibliographystyle{apacite}
+\bibliography{synchronization} 
+%---------------------
+\end{document}
+
